@@ -1,0 +1,12 @@
+<%= turbo_frame_tag project do %>
+  <div class="bg-white mb-4 py-2 px-4 shadow-md rounded-lg flex justify-between items-center gap-3">
+    <%= link_to project.name, 
+                project_path(project),
+                class: "w-full text-blue-500",
+                data: { turbo_frame: "_top" } %>
+
+    <%= render "delete_button", url: project_path(project) %>
+    <%= render "edit_button", url: edit_project_path(project) %>
+  </div>
+<% end %>
+

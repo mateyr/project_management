@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders:
+      user:
+        email: user@example.com
+      project:
+        name: Name of the project
+      task:
+        name: Name of the task
+        description: Description of the task (optional)
+    prompts:
+      task:
+        user_id: Assign to
+

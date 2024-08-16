@@ -1,0 +1,5 @@
+StringLiterals:
+  Enabled: false
+Layout/TrailingEmptyLines:
+  Enabled: true
+  EnforcedStyle: final_newline

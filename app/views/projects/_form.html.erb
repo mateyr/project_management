@@ -1,0 +1,10 @@
+<%= custom_form_for(project, html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
+  <%= form_error_notification(project) %>
+  <%= f.input(:name, 
+              label: false,
+              autofocus: true,
+              wrapper_html: { class: "flex-1" }) %>
+  <%= render "back_button", url: projects_path %>
+  <%= render "submit_with_icon", submit_text: submit_text, form: f %>
+<% end %>
+

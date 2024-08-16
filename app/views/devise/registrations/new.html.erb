@@ -1,0 +1,7 @@
+<div class="w-full flex flex-col justify-center sm:px-6 lg:px-8 px-6">
+  <%= render "devise/shared/header", title: "Create a new account", 
+                                     link_text: "sign in to your account",
+                                     link_path: new_user_session_path %>
+
+  <%= render "devise/shared/form", form_action: "sign_up" %>
+</div>

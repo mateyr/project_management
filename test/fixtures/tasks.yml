@@ -1,0 +1,7 @@
+one:
+  project: one
+  user: admin
+  name: "Create database"
+  description: "Create database for project management app"
+  end_date: <%= Date.current %>
+

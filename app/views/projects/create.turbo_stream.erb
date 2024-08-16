@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "projects", @project %>
+<%= turbo_stream.update  Project.new, "" %>
+<%= render_turbo_stream_flash_messages %>
+

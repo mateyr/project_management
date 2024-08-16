@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "tasks", @task %>
+<%= turbo_stream.update  Task.new, "" %>
+<%= render_turbo_stream_flash_messages %>

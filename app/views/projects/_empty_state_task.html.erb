@@ -1,0 +1,17 @@
+<div class="empty_state">
+  <%= render "svg_new_project" %>
+  
+  <h3 class="mt-2 text-gray-900 font-semibold">
+    No tasks
+  </h3>
+  
+  <p class="mb-4 text-gray-500 text-sm">
+    Create your first task to start managing your work.
+  </p>
+  
+  <%= link_to "New task",
+              new_project_task_path(project),
+              class: 'btn btn--primary w-auto',
+              data: { turbo_frame: dom_id(Task.new) } %>
+</div>
+

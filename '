@@ -1,0 +1,13 @@
+<%= turbo_frame_tag task do %>
+  <div class="bg-white mb-4 py-2 px-4 shadow-md rounded-lg flex justify-between items-center gap-3">
+    <%= link_to task.name,
+                project_task_path(project, task),
+                class: "text-blue-500",
+                data: { turbo_frame: "_top" } %>
+
+    <div><%= task.user.email %></task></div>
+    <div><%= task.end_date %></div>
+    <div><%= task.status.humanize %></task></div>
+  </div>
+<% end %>
+

@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to projects"), projects_path %>
+
+  <div class="text-2xl font-semibold my-5">
+    <h1>Edit project</h1>
+  </div>
+
+  <%= turbo_frame_tag @project do %>
+    <%= render "form", submit_text: "Update project", project: @project %>
+  <% end %>
+</main>
