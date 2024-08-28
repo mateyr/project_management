@@ -1,4 +1,3 @@
 <%= turbo_stream.prepend "projects", @project %>
-<%= turbo_stream.update  Project.new, "" %>
+<%= turbo_stream.remove_all  "form#new_project" %>
 <%= render_turbo_stream_flash_messages %>
-

@@ -2,26 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+turbo-frame {
+  @apply block;
 }
-
-*/
 
 @layer components {
   .hamburger div:first-child {
     @apply rotate-45 translate-y-1.5;
   }
+
   .hamburger div:last-child {
     @apply -rotate-45 -translate-y-1;
   }
+
+  .wrapper {
+    @apply bg-white shadow-md rounded-lg px-4 py-2 mb-4 flex;
+  }
+
   .btn {
     @apply py-2 px-4 border border-transparent rounded-md text-sm font-medium focus:outline-none cursor-pointer;
   }
+
   .btn--primary {
     @apply text-white bg-blue-500 hover:bg-blue-500 focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out;
   }
@@ -35,7 +36,15 @@
   }
 
   .empty_state {
-    @apply block group-has-[+*>turbo-frame]:hidden flex flex-col items-center border-2 border-dashed rounded-lg p-4;
+    @apply mb-8 flex flex-col items-center border-2 border-dashed rounded-lg p-4;
+  }
+
+  .empty_state--projects {
+    @apply group-has-[+*>turbo-frame]:hidden;
+  }
+
+  .empty_state--tasks {
+    @apply group-has-[+*>turbo-frame>turbo-frame]:hidden;
   }
 
   .flash {

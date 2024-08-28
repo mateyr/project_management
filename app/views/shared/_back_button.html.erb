@@ -1,4 +1,4 @@
-<%= link_to url, class: "btn btn--light btn--icon" do %>
+<%= link_to url, class: "btn btn--light btn--icon", data: { turbo_frame: '_top' } do %>
   <span class="hidden">label</span>
   <%= render "shared/svg/back_icon" %>
 <% end %>

@@ -24,9 +24,25 @@ class TasksController < ApplicationController
     end
   end
 
-  def update; end
+  def update
+    if @task.update(task_params)
+      respond_to do |format|
+        format.html { redirect_to project_path(@project), notice: "Task was sucessfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Task was sucessfully updated." }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @task.destroy
+
+    respond_to do |format|
+      format.html { redirect_to projects_path(@project), notice: "Task was sucessfully destroyed." }
+      format.turbo_stream { flash.now[:notice] = "Task was sucessfully destroyed." }
+    end
+  end
 
   private
 

@@ -6,7 +6,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test "There are no projects" do
-    Project.delete_all
+    Project.destroy_all
     visit projects_path
     assert_selector ".group h3", text: "No projects"
   end
@@ -32,7 +32,6 @@ class ProjectsTest < ApplicationSystemTestCase
 
   test "Delete a project" do
     visit projects_path
-
     click_on "Delete project", match: :first
     assert_selector "#flash div", text: "Project was sucessfully destroyed."
   end

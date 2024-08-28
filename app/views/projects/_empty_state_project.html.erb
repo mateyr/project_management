@@ -1,17 +1,16 @@
-<div class="empty_state">
-  <%= render "svg_new_project" %>
-  
+<div class="hidden only:empty_state empty_state--projects">
+  <%= render "shared/svg/new_project_icon" %>
+
   <h3 class="mt-2 text-gray-900 font-semibold">
     No projects
   </h3>
-  
+
   <p class="mb-4 text-gray-500 text-sm">
     Create your first task to start managing your work.
   </p>
-  
+
   <%= link_to "New project",
               new_project_path,
               class: 'btn btn--primary w-auto',
-              data: { turbo_frame: dom_id(Project.new) } %>
+              data: { turbo_stream: true } %>
 </div>
-

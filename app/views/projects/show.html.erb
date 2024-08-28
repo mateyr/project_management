@@ -1,17 +1,20 @@
 <main class="container">
-    <div class='font-semibold flex justify-between items-center mb-8'>
-      <h1 class='text-2xl'>Tasks</h1>
-      <%= link_to "New task", 
-                  new_project_task_path(@project), 
-                  class: 'btn btn--primary w-auto', 
-                  data: { turbo_frame: dom_id(Task.new) } %>
-    </div>
+  <div class='font-semibold flex justify-between items-center mb-8'>
+    <h1 class='text-2xl'>Tasks</h1>
+    <%= link_to "New task",
+                new_project_task_path(@project), 
+                class: 'btn btn--primary w-auto', 
+                data: { turbo_stream: true } %>
+  </div>
 
-   <%= turbo_frame_tag Task.new, class: "group" do %>
-     <%= render "empty_state_task", project: @project %>
-   <% end %>
-   <%= turbo_frame_tag "tasks" do %>
-     <%= render partial: "tasks/task", collection: @project.tasks.ordered, locals: { project: @project } %>
-   <% end %>
+  <%= turbo_frame_tag Task.new, class: "group" do %>
+    <%= render "tasks/empty_state_task", project: @project %>
+  <% end %>
+
+  <div>
+    <%= render partial: "tasks/header" %>
+    <%= turbo_frame_tag "tasks" do %>
+      <%= render partial: "tasks/task", collection: @project.tasks.ordered, locals: { project: @project } %>
+    <% end %>
+  </div>
 </main>
-

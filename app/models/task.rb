@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: { scope: :project_id }
   validates :description, length: { maximum: 500 }
   validates :end_date, :status, presence: true
 

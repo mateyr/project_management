@@ -10,6 +10,7 @@ class CreateTasks < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    add_index :tasks, :name, unique: true
+    add_index :tasks, %i[name project_id], unique: true
+    # add_index :tasks, :name, unique: true
   end
 end

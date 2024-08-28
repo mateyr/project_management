@@ -1,5 +1,5 @@
-<%= turbo_frame_tag task do %>
-  <div class="bg-white mb-4 py-2 px-4 shadow-md rounded-lg flex flex-col gap-3 md:flex-row md:items-center ">
+<%= turbo_frame_tag task, class: "group" do %>
+  <div class="wrapper flex-col gap-3 md:flex-row md:items-center md:mb-0 md:border-b md:rounded-none group-last:rounded-b-lg">
     <div class="flex-1">
       <span class="font-semibold mr-2 md:hidden">Name:</span>
       <%= link_to task.name,
@@ -7,22 +7,21 @@
                   class: "text-blue-500",
                   data: { turbo_frame: "_top" } %>
     </div>
-    <div class="flex-grow-0 flex-shrink-0 md:basis-[12rem]">
+    <div class="flex-grow-0 flex-shrink-0 md:basis-48">
       <span class="font-semibold mr-2 md:hidden">Assing to:</span>
       <span><%= task.user.email %></span>
     </div>
-    <div class="flex-grow-0 flex-shrink-0 md:basis-[9rem]">
+    <div class="flex-grow-0 flex-shrink-0 md:basis-36">
       <span class="font-semibold mr-2 md:hidden">End date:</span>
       <span><%= task.end_date %></span>
     </div>
-    <div class="flex-grow-0 flex-shrink-0 md:basis-[9rem]">
+    <div class="flex-grow-0 flex-shrink-0 md:basis-36">
       <span class="font-semibold mr-2 md:hidden">Status:</span>
       <span><%= task.status.humanize %></span>
     </div>
-    <div class="flex gap-3">
+    <div class="flex gap-3 md:basis-24">
       <%= render "shared/delete_button", url: project_task_path(project, task), label: "Delete task" %>
       <%= render "shared/edit_button", url: edit_project_task_path(project, task), label: "Edit task"%>
     </div>
   </div>
 <% end %>
-
