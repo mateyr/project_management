@@ -1,2 +1,5 @@
 one:
   name: "Project management"
+
+two:
+  name: "Broadcast to admin user"

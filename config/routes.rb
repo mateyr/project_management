@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :projects do
     resources :tasks, except: [:index]
+    resources :project_users, except: %i[show edit update]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

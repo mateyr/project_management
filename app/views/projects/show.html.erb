@@ -1,10 +1,15 @@
 <main class="container">
-  <div class='font-semibold flex justify-between items-center mb-8'>
+  <div class='font-semibold flex flex-col gap-3 justify-between md:flex-row md:items-center mb-8'>
     <h1 class='text-2xl'>Tasks</h1>
-    <%= link_to "New task",
-                new_project_task_path(@project), 
-                class: 'btn btn--primary w-auto', 
-                data: { turbo_stream: true } %>
+    <div class="flex space-x-3">
+      <%= link_to "New task",
+                  new_project_task_path(@project), 
+                  class: 'btn btn--primary w-auto', 
+                  data: { turbo_stream: true } %>
+      <%= link_to "Manage collaborators",
+                  project_project_users_path(@project),
+                  class: 'btn btn--primary w-auto' %>
+    </div>
   </div>
 
   <%= turbo_frame_tag Task.new, class: "group" do %>
