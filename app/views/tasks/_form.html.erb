@@ -6,7 +6,7 @@
   <%= f.input(:user_id,
               required: true,
               label: false, 
-              collection: User.pluck(:email, :id), 
+              collection: project.users.pluck(:email, :id), 
               prompt: :translate,
               wrapper_html: { class: "lg:flex-grow-0 lg:flex-shrink-0 lg:basis-44" }) %>
   <%= f.input(:end_date, label: false, html5: true) %>

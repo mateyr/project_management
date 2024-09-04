@@ -51,4 +51,24 @@ class TasksTest < ApplicationSystemTestCase
 
     assert_selector "#new_task>form>div", text: "User must exist, name can't be blank, and end date can't be blank"
   end
+
+  test "Broadcast update" do
+    visit project_path(projects(:one))
+
+    assert_selector "##{dom_id(tasks(:one))} > div > div > a", text: "Create database"
+
+    Task.find(tasks(:one).id).update!(name: "Create database update")
+
+    assert_selector "##{dom_id(tasks(:one))} > div > div > a", text: "Create database update"
+  end
+
+  test "Broadcast delete" do
+    visit project_path(projects(:one))
+
+    assert_selector "##{dom_id(tasks(:one))} > div > div > a", text: "Create database"
+
+    Task.find(tasks(:one).id).destroy
+
+    assert_selector ".group h3", text: "No tasks"
+  end
 end

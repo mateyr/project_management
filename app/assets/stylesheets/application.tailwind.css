@@ -15,6 +15,21 @@ turbo-frame {
     @apply -rotate-45 -translate-y-1;
   }
 
+  .nav {
+    @apply fixed inset-0 z-10;
+    @apply w-[calc(100%-4.5rem)] translate-x-[-100%];
+    @apply bg-blue-500 border-r;
+    @apply transition-transform duration-300;
+  }
+
+  .nav-peer-checked {
+    @apply peer-checked:translate-x-0;
+  }
+
+  .nav-md {
+    @apply md:w-auto md:static md:border-r-0 md:shadow-none md:translate-x-0;
+  }
+
   .wrapper {
     @apply bg-white shadow-md rounded-lg px-4 py-2 mb-4 flex;
   }
