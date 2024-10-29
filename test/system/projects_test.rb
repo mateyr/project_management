@@ -62,4 +62,19 @@ class ProjectsTest < ApplicationSystemTestCase
 
     assert_selector ".group h3", text: "No projects"
   end
+
+  # TODO: Investigate how to create a system test
+  test "User cannot delete a project if not an admin" do
+    login_as users(:collaborator)
+
+    ability = Ability.new(users(:collaborator))
+    assert ability.cannot?(:destroy, projects(:two))
+  end
+
+  test "User cannot manage a project if not an admin" do
+    login_as users(:collaborator)
+
+    ability = Ability.new(users(:collaborator))
+    assert ability.cannot?(:manage, project_users(:two))
+  end
 end

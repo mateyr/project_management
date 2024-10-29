@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_28_184901) do
   create_table "project_users", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
+    t.integer "role", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id", "user_id"], name: "index_project_users_on_project_id_and_user_id", unique: true

@@ -1,3 +1,9 @@
 one:
-  project: one 
+  project: one
   user: admin
+  role: admin
+
+two:
+  project: two
+  user: collaborator
+  role: collaborator

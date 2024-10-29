@@ -34,6 +34,6 @@ class Task < ApplicationRecord
   private
 
   def set_defaults
-    self.status = :not_started
+    self.status ||= :not_started
   end
 end

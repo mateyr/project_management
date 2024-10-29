@@ -4,7 +4,8 @@
 # to make user management in projects more intuitive.
 class ProjectUsersController < ApplicationController
   before_action :set_project
-  before_action :set_project_user, only: %i[destroy]
+  authorize_resource :project
+  load_and_authorize_resource :project_user, through: :project
 
   def index
     @project_users = @project.project_users.includes(:user)
@@ -39,10 +40,6 @@ class ProjectUsersController < ApplicationController
   end
 
   private
-
-  def set_project_user
-    @project_user = ProjectUser.find(params[:id])
-  end
 
   def set_project
     @project = current_user.projects.find(params[:project_id])

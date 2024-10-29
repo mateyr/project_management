@@ -76,3 +76,5 @@ gem "devise", "~> 4.9"
 gem "pry", "~> 0.14.2"
 
 gem "tailwind_merge", "~> 0.12.0"
+
+gem 'cancancan'
