@@ -1,4 +1,4 @@
-<%= custom_form_for([project, project_user], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
+<%= tailwind_form_for([project, project_user], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
   <%= form_error_notification(project_user) %>
   <%= f.input(:user_id, required: true, label: false, collection: User.pluck(:email, :id), prompt: :translate)%>
 

@@ -1,4 +1,4 @@
-<%= custom_form_for([project, task], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
+<%= tailwind_form_for([project, task], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
   <%= form_error_notification(task) %>
   <%= f.input(:name, 
               label: false,

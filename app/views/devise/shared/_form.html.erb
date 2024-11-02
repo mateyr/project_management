@@ -1,7 +1,7 @@
 <% form_details = form_action_details %>
 
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-  <%= custom_form_for(resource, as: resource_name, url: form_details[:url]) do |f| %>
+  <%= tailwind_form_for(resource, as: resource_name, url: form_details[:url]) do |f| %>
     <%= f.input(:email, error: true, required: true, input_wrapper_html: { class: "mt-1" }) %>
     <%= f.input(:password, error: true, required: true, input_wrapper_html: { class: "mt-1" }) %>
 
@@ -11,4 +11,3 @@
     <%= f.submit(form_details[:submit_text]) %>
   <% end %>
 </div>
-

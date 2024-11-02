@@ -13,14 +13,6 @@
 
   <body class="bg-gray-50">
     <%= render "layouts/navbar" %>
-    <% unless user_signed_in? %>
-      <p class="text-center italic max-w-[40rem] mx-auto mb-12 text-muted">
-      This single-page project management application was built using Turbo 
-      and a few lines of JavaScript for animations. 
-      It was inspired by the
-      <%= link_to 'Turbo Rails tutorial', 'https://www.hotrails.dev/turbo-rails', class: 'text-blue-500 hover:text-blue-700' %>.
-     </p>
-    <% end %>
 
     <%= turbo_frame_tag "flash" do %>
       <%= render "shared/flash" %>

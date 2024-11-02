@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module FormHelper
   include TailwindUtils
 
-  def custom_form_for(object, **options, &block)
+  def tailwind_form_for(object, **options, &block)
     form_class = "bg-white py-8 px-10 shadow rounded-lg flex flex-col flex-wrap justify-between gap-6"
     options[:html] = merge_classes(form_class, **(options[:html] || {}))
-    options[:builder] = CustomFormBuilder
+    options[:builder] = TailwindFormBuilder
 
     simple_form_for(object, **options, &block)
   end
