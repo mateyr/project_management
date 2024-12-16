@@ -7,16 +7,16 @@ class Ability
   def initialize(user)
     can :create, Project
 
-    can :manage, Project, project_users: { user:, role: :admin }
+    can :manage, Project, collaborators: { user:, role: :admin }
 
-    can :read, Project, project_users: { user: }
+    can :read, Project, collaborators: { user: }
 
-    can :manage, Task, project: { project_users: { user:, role: :admin } }
+    can :manage, Task, project: { collaborators: { user:, role: :admin } }
 
-    can :read, Task, project: { project_users: { user: } }
+    can :read, Task, project: { collaborators: { user: } }
 
     can(:update, Task, user:)
 
-    can :manage, ProjectUser, project: { project_users: { user:, role: :admin } }
+    can :manage, ProjectUser, project: { collaborators: { user:, role: :admin } }
   end
 end

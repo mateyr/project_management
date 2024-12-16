@@ -1,5 +1,7 @@
 one:
   name: "Project management"
+  owner: admin
 
 two:
   name: "Broadcast to admin user"
+  owner: collaborator

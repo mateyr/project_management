@@ -5,18 +5,18 @@
 class ProjectUsersController < ApplicationController
   before_action :set_project
   authorize_resource :project
-  load_and_authorize_resource :project_user, through: :project
+  load_and_authorize_resource :project_user, through: :project, through_association: :collaborators
 
   def index
-    @project_users = @project.project_users.includes(:user)
+    @project_users = @project.collaborators.includes(:user)
   end
 
   def new
-    @project_user = @project.project_users.build
+    @project_user = @project.collaborators.build
   end
 
   def create
-    @project_user = @project.project_users.build(project_user_params)
+    @project_user = @project.collaborators.build(project_user_params)
 
     if @project_user.save
       respond_to do |format|
@@ -42,7 +42,7 @@ class ProjectUsersController < ApplicationController
   private
 
   def set_project
-    @project = current_user.projects.find(params[:project_id])
+    @project = current_user.involved_projects.find(params[:project_id])
   end
 
   def project_user_params

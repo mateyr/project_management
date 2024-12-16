@@ -17,7 +17,7 @@ class ProjectsTest < ApplicationSystemTestCase
     click_on "New project", match: :first
     fill_in "project_name", with: "Sistemas de Información"
     find('label.btn--primary').click
-    assert_selector "#flash div", text: "Project was sucessfully created."
+    assert_selector "#flash div", text: "Project was successfully created."
   end
 
   test "Update a project" do
@@ -27,13 +27,13 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "project_name", with: "Project management updated"
     find('label.btn--primary').click
 
-    assert_selector "#flash div", text: "Project was sucessfully updated."
+    assert_selector "#flash div", text: "Project was successfully updated."
   end
 
   test "Delete a project" do
     visit projects_path
     click_on "Delete project", match: :first
-    assert_selector "#flash div", text: "Project was sucessfully destroyed."
+    assert_selector "#flash div", text: "Project was successfully destroyed."
   end
 
   test "Uniqueness in project name" do
