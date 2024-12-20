@@ -17,6 +17,6 @@ class Ability
 
     can(:update, Task, user:)
 
-    can :manage, ProjectUser, project: { collaborators: { user:, role: :admin } }
+    can :manage, Collaborator, project: { collaborators: { user:, role: :admin } }
   end
 end

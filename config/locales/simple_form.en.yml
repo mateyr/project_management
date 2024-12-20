@@ -11,5 +11,5 @@ en:
     prompts:
       task:
         user_id: Assign to
-      project_user:
+      collaborators:
         user_id: Add collaborator

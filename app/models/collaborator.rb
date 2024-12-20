@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Project User
-class ProjectUser < ApplicationRecord
+class Collaborator < ApplicationRecord
   enum :role, %i[admin collaborator], default: :collaborator, validate: true
 
   belongs_to :project

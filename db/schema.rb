@@ -14,15 +14,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_28_184901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "project_users", force: :cascade do |t|
+  create_table "collaborators", force: :cascade do |t|
     t.bigint "project_id", null: false
     t.bigint "user_id", null: false
     t.integer "role", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id", "user_id"], name: "index_project_users_on_project_id_and_user_id", unique: true
-    t.index ["project_id"], name: "index_project_users_on_project_id"
-    t.index ["user_id"], name: "index_project_users_on_user_id"
+    t.index ["project_id", "user_id"], name: "index_collaborators_on_project_id_and_user_id", unique: true
+    t.index ["project_id"], name: "index_collaborators_on_project_id"
+    t.index ["user_id"], name: "index_collaborators_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -57,8 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_28_184901) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "project_users", "projects"
-  add_foreign_key "project_users", "users"
+  add_foreign_key "collaborators", "projects"
+  add_foreign_key "collaborators", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"

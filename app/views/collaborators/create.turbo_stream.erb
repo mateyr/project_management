@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "collaborators", partial: "collaborator", locals: { project: @project, collaborator: @collaborator } %>
+<%= turbo_stream.update Collaborator.new, "" %>
+<%= render_turbo_stream_flash_messages %>

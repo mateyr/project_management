@@ -75,6 +75,6 @@ class ProjectsTest < ApplicationSystemTestCase
     login_as users(:collaborator)
 
     ability = Ability.new(users(:collaborator))
-    assert ability.cannot?(:manage, project_users(:two))
+    assert ability.cannot?(:manage, collaborators(:two))
   end
 end

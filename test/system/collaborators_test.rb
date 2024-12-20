@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ProjectUsersTest < ApplicationSystemTestCase
+class CollaboratorsTest < ApplicationSystemTestCase
   setup do
     login_as users(:admin)
   end
@@ -10,10 +10,10 @@ class ProjectUsersTest < ApplicationSystemTestCase
 
     click_on "Manage collaborators"
     click_on "New collaborador"
-    select "collaborator@example.com", from: "project_user_user_id"
+    select "collaborator@example.com", from: "collaborator_user_id"
     find('label.btn--primary').click
 
-    assert_selector "#flash div", text: "Collaborador was sucessfully added."
+    assert_selector "#flash div", text: "Collaborador was successfully added."
   end
 
   test "Remove a collaborator from a project" do
@@ -21,7 +21,7 @@ class ProjectUsersTest < ApplicationSystemTestCase
 
     click_on "Manage collaborators"
     click_on "Delete project user"
-    assert_selector "#flash div", text: "Collaborador was sucessfully destroyed."
+    assert_selector "#flash div", text: "Collaborador was successfully destroyed."
   end
 
   test "Verifies that a project added to a user is correctly displayed in the user's interface in real time" do
@@ -30,7 +30,7 @@ class ProjectUsersTest < ApplicationSystemTestCase
 
     assert_selector ".group h3", text: "No projects"
 
-    ProjectUser.create!(project_id: projects(:two).id, user_id: users(:admin).id)
+    Collaborator.create!(project_id: projects(:two).id, user_id: users(:admin).id)
 
     assert_selector "##{dom_id(projects(:two))} > div > a", text: "Broadcast to admin user"
   end
@@ -41,7 +41,7 @@ class ProjectUsersTest < ApplicationSystemTestCase
 
     assert_selector "##{dom_id(projects(:one))} > div > a", text: "Project management"
 
-    ProjectUser.find_by(project_id: projects(:one), user_id: users(:admin)).destroy
+    Collaborator.find_by(project_id: projects(:one), user_id: users(:admin)).destroy
 
     assert_selector ".group h3", text: "No projects"
   end

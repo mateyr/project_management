@@ -1,3 +1,0 @@
-<%= turbo_stream.prepend "project_users", partial: "project_user", locals: { project: @project, project_user: @project_user } %>
-<%= turbo_stream.update ProjectUser.new, "" %>
-<%= render_turbo_stream_flash_messages %>

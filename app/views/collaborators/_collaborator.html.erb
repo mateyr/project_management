@@ -1,0 +1,11 @@
+<%= turbo_frame_tag collaborator, class: "group" do %>
+  <div class="wrapper justify-between items-center gap-3 flex-wrap md:mb-0 md:border-b md:rounded-none group-last:rounded-b-lg">
+    <span class="text-blue-500 flex gap-3 md:basis-36"><%= collaborator.user.id %></span>
+    <span class="text-blue-500 flex-1"><%= collaborator.user.email %></span>
+    <span class="flex gap-3 md:basis-36">Admin</span>
+    <div class="flex gap-3 md:basis-24">
+      <%= render "shared/delete_button", url: project_collaborator_path(project, collaborator), label: "Delete project user" %>
+      <%= render "shared/edit_button", url: "#", label: "Edit project user" %>
+    </div>
+  </div>
+<% end %>

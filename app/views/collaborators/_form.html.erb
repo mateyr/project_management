@@ -1,0 +1,9 @@
+<%= tailwind_form_for([project, collaborator], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
+  <%= form_error_notification(collaborator) %>
+  <%= f.input(:user_id, required: true, label: false, collection: User.pluck(:email, :id), prompt: :translate)%>
+
+  <div class="flex gap-3 order-last lg:order-none">
+    <%= render "shared/back_button", url: project_collaborators_path(project), label: "Back to collaborators" %>
+    <%= render "shared/submit_button", submit_text: submit_text, form: f %>
+  </div>
+<% end %>
