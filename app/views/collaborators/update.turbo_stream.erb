@@ -1,0 +1,2 @@
+<%= turbo_stream.replace @collaborator, partial: "collaborator", locals: { project: @project, collaborator: @collaborator } %>
+<%= render_turbo_stream_flash_messages %>

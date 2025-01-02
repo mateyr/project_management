@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to collaborators"), project_collaborators_path(@project) %>
+
+  <div class="text-2xl font-semibold my-5">
+    <h1>Edit collaborator</h1>
+  </div>
+
+  <%= turbo_frame_tag @collaborator do %>
+    <%= render "form", submit_text: "Update collaborator", project: @project, collaborator: @collaborator %>
+  <% end %>
+</main>
