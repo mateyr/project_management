@@ -6,4 +6,4 @@ one:
 two:
   project: two
   user: collaborator
-  role: collaborator
+  role: admin

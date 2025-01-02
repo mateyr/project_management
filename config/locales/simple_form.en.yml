@@ -11,5 +11,8 @@ en:
     prompts:
       task:
         user_id: Assign to
-      collaborators:
-        user_id: Add collaborator
+      collaborator:
+        user_id: Select a user
+        role: Select a role
+        project_id: Select a project
+        created_at: Prueba

@@ -13,6 +13,6 @@
     <%= render "empty_state_project" %>
   <% end %>
   <%= turbo_frame_tag "projects" do %>
-    <%= render @projects %>
+    <%= render partial: "project", collection: @projects, locals: { user_id: current_user.id } %>
   <% end %>
 </main>

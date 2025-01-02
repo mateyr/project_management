@@ -13,7 +13,8 @@ class Collaborator < ApplicationRecord
 
   after_create_commit lambda {
                         broadcast_prepend_later_to [user, "projects"],
-                                                   partial: "projects/project", locals: { project: },
+                                                   partial: "projects/project",
+                                                   locals: { project:, user_id: user.id },
                                                    target: "projects"
                       }
 

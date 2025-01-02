@@ -9,8 +9,9 @@ class CollaboratorsTest < ApplicationSystemTestCase
     visit project_path(projects(:one))
 
     click_on "Manage collaborators"
-    click_on "New collaborador"
+    click_on "New collaborator"
     select "collaborator@example.com", from: "collaborator_user_id"
+    select "Admin", from: "collaborator_role"
     find('label.btn--primary').click
 
     assert_selector "#flash div", text: "Collaborador was successfully added."
@@ -20,8 +21,18 @@ class CollaboratorsTest < ApplicationSystemTestCase
     visit project_path(projects(:one))
 
     click_on "Manage collaborators"
-    click_on "Delete project user"
+    click_on "Delete collaborator"
     assert_selector "#flash div", text: "Collaborador was successfully destroyed."
+  end
+
+  test "Update a collaborator" do
+    visit project_collaborators_path(projects(:one))
+
+    click_on "Edit collaborator"
+    select "Collaborator", from: "collaborator_role"
+    find('label.btn--primary').click
+
+    assert_selector "#flash div", text: "Collaborador was successfully updated."
   end
 
   test "Verifies that a project added to a user is correctly displayed in the user's interface in real time" do

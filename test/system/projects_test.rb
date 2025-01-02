@@ -68,13 +68,13 @@ class ProjectsTest < ApplicationSystemTestCase
     login_as users(:collaborator)
 
     ability = Ability.new(users(:collaborator))
-    assert ability.cannot?(:destroy, projects(:two))
+    assert ability.cannot?(:destroy, projects(:one))
   end
 
   test "User cannot manage a project if not an admin" do
     login_as users(:collaborator)
 
     ability = Ability.new(users(:collaborator))
-    assert ability.cannot?(:manage, collaborators(:two))
+    assert ability.cannot?(:manage, collaborators(:one))
   end
 end

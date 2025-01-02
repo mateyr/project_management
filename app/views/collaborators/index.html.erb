@@ -1,7 +1,7 @@
 <main class="container">
   <div class='font-semibold flex justify-between items-center mb-8'>
     <h1 class='text-2xl'>Collaborators</h1>
-    <%= link_to "New collaborador", 
+    <%= link_to "New collaborator", 
                 new_project_collaborator_path(@project),
                 data: { turbo_frame: dom_id(Collaborator.new) },
                 class: 'btn btn--primary w-auto' %>

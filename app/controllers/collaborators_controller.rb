@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# CollaboratorsController
 class CollaboratorsController < ApplicationController
   before_action :set_project
   authorize_resource :project
@@ -13,6 +14,8 @@ class CollaboratorsController < ApplicationController
     @collaborator = @project.collaborators.build
   end
 
+  def edit; end
+
   def create
     @collaborator = @project.collaborators.build(collaborator_params)
 
@@ -23,6 +26,19 @@ class CollaboratorsController < ApplicationController
       end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @collaborator.update(collaborator_params)
+      respond_to do |format|
+        format.html do
+          redirect_to project_collaborators_path(@project), notice: "Collaborador was successfully updated."
+        end
+        format.turbo_stream { flash.now[:notice] = "Collaborador was successfully updated." }
+      end
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -44,6 +60,6 @@ class CollaboratorsController < ApplicationController
   end
 
   def collaborator_params
-    params.require(:collaborator).permit(:user_id)
+    params.require(:collaborator).permit(:user_id, :role)
   end
 end

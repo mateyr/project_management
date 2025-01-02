@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   authorize_resource
 
   def index
-    @projects = current_user.involved_projects.ordered
+    @projects = current_user.involved_projects.includes(:collaborators).ordered
   end
 
   def show; end

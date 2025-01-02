@@ -10,7 +10,9 @@ class Project < ApplicationRecord
 
   after_update_commit lambda {
                         users.each do |user|
-                          broadcast_replace_later_to [user, "projects"]
+                          broadcast_replace_later_to [user, "projects"],
+                                                     partial: "projects/project",
+                                                     locals: { project: self, user_id: user.id }
                         end
                       }
 
@@ -23,4 +25,10 @@ class Project < ApplicationRecord
   alias_attribute :owner_id, :user_id
 
   scope :ordered, -> { order(id: :desc) }
+
+  def role_for_user(user_id)
+    return "Owner" if owner_id == user_id
+
+    collaborators.find { |colab| colab.user_id == user_id }&.role&.humanize || "User not part of this project"
+  end
 end

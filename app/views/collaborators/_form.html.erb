@@ -1,8 +1,23 @@
 <%= tailwind_form_for([project, collaborator], html: { class: 'flex-row items-center p-4 gap-3 mb-4' }) do |f| %>
   <%= form_error_notification(collaborator) %>
-  <%= f.input(:user_id, required: true, label: false, collection: User.pluck(:email, :id), prompt: :translate)%>
 
-  <div class="flex gap-3 order-last lg:order-none">
+  <%= f.input(:user_id,
+              required: true,
+              label: false,
+              disabled: !collaborator.new_record?,
+              collection: User.pluck(:email, :id),
+              prompt: :translate,
+              wrapper_html: { class: "lg:grow" }) %>
+
+  <%= f.input(:role,
+              required: true,
+              label: false,
+              collection: [["Select a role", nil]] + Collaborator.roles.keys.map{ |role| [role.humanize, role] },
+              selected: collaborator.new_record? ? 0 : collaborator.role,
+              prompt: :translate,
+              wrapper_html: { class: "lg:grow-0 basis-60" }) %>
+
+  <div class="flex gap-3 order-last lg:order-none lg:grow-0">
     <%= render "shared/back_button", url: project_collaborators_path(project), label: "Back to collaborators" %>
     <%= render "shared/submit_button", submit_text: submit_text, form: f %>
   </div>
