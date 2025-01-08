@@ -4,7 +4,7 @@
   <div class='font-semibold flex flex-col gap-3 justify-between md:flex-row md:items-center mb-8'>
     <h1 class='text-2xl'>Tasks</h1>
     <div class="flex space-x-3">
-      <% if @project.collaborators.where(user: current_user, role: :admin).exists? || @project.owner == current_user %>
+      <% if @project.role_for_user(current_user.id) == "Owner" || "admin" %>
         <%= link_to "New task",
                     new_project_task_path(@project), 
                     class: 'btn btn--primary w-auto', 
@@ -23,7 +23,7 @@
   <div>
     <%= render partial: "tasks/header" %>
     <%= turbo_frame_tag "tasks" do %>
-      <%= render partial: "tasks/task", collection: @project.tasks.ordered, locals: { project: @project } %>
+      <%= render partial: "tasks/task", collection: @project.tasks.sort_by(&:id).reverse, locals: { project: @project } %>
     <% end %>
   </div>
 </main>

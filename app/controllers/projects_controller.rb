@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = current_user.involved_projects.find(params[:id])
+    @project = current_user.involved_projects.includes(:collaborators, tasks: :user).find(params[:id])
   end
 
   def project_params
