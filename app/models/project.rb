@@ -27,7 +27,7 @@ class Project < ApplicationRecord
   scope :ordered, -> { order(id: :desc) }
 
   def role_for_user(user_id)
-    return "Owner" if owner_id == user_id
+    return "owner" if owner_id == user_id
 
     collaborators.find { |colab| colab.user_id == user_id }&.role&.humanize || "User not part of this project"
   end

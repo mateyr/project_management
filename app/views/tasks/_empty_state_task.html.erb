@@ -5,12 +5,14 @@
     No tasks
   </h3>
 
-  <p class="mb-4 text-gray-500 text-sm">
-    Create your first task to start managing your work.
-  </p>
+  <% if  ["owner", "admin"].include?(@project.role_for_user(user_id)) %>
+    <p class="mb-4 text-gray-500 text-sm">Create your first task to start managing your work.</p>
 
-  <%= link_to "New task",
-              new_project_task_path(project),
-              class: 'btn btn--primary w-auto',
-              data: { turbo_stream: true } %>
+    <%= link_to "New task",
+                new_project_task_path(project),
+                class: 'btn btn--primary w-auto',
+                data: { turbo_stream: true } %>
+  <% else %>
+    <p class="text-gray-500 text-sm">This project doesn't have any tasks yet.</p>
+  <% end %>
 </div>

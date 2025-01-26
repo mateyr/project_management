@@ -5,7 +5,7 @@
                 class: "grow text-blue-500",
                 data: { turbo_frame: "_top" } %>
 
-    <div class="grow-0 basis-60"><%= project.role_for_user(user_id) %></div> 
+    <div class="grow-0 basis-60"><%= project.role_for_user(user_id).humanize %></div> 
 
     <div class="flex gap-3 grow-0 md:basis-24">
       <%= render "shared/delete_button", url: project_path(project), label: "Delete project" %>
