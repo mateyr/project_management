@@ -2,7 +2,7 @@
   <div class="wrapper flex-wrap justify-between items-center gap-3">
     <%= link_to project.name, 
                 project_path(project),
-                class: "grow text-blue-500",
+                class: "grow text-blue-600",
                 data: { turbo_frame: "_top" } %>
 
     <div class="grow-0 basis-60"><%= project.role_for_user(user_id).humanize %></div> 

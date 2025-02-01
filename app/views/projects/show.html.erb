@@ -1,8 +1,10 @@
 <%= turbo_stream_from current_user, "tasks" %>
 
 <main class="container">
-  <div class='font-semibold flex flex-col gap-3 justify-between md:flex-row md:items-center mb-8'>
-    <h1 class='text-2xl'>Tasks</h1>
+  <%= link_to sanitize("&larr; Back to projects"), projects_path %>
+  <p class="my-5"><span class="font-semibold">Project: </span><%= @project.name %></p>
+  <div class='font-semibold flex flex-col gap-3 justify-between md:flex-row md:items-center my-5'>
+    <h1 class='text-3xl'>Tasks</h1>
     <div class="flex space-x-3">
       <% if ["owner", "admin"].include?(@project.role_for_user(current_user.id)) %>
         <%= link_to "New task",

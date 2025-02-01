@@ -1,6 +1,8 @@
 <main class="container">
-  <div class='font-semibold flex justify-between items-center mb-8'>
-    <h1 class='text-2xl'>Collaborators</h1>
+  <%= link_to sanitize("&larr; Back to projects"), projects_path %>
+  <p class="my-5"><span class="font-semibold">Project: </span><%= @project.name %></p>
+  <div class='font-semibold flex justify-between items-center my-5'>
+    <h1 class='text-3xl'>Collaborators</h1>
     <%= link_to "New collaborator", 
                 new_project_collaborator_path(@project),
                 data: { turbo_frame: dom_id(Collaborator.new) },

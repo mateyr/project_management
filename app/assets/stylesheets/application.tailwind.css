@@ -18,7 +18,7 @@ turbo-frame {
   .nav {
     @apply fixed inset-0 z-10;
     @apply w-[calc(100%-4.5rem)] translate-x-[-100%];
-    @apply bg-blue-500 border-r;
+    @apply bg-blue-600 border-r;
     @apply transition-transform duration-300;
   }
 
@@ -39,7 +39,7 @@ turbo-frame {
   }
 
   .btn--primary {
-    @apply text-white bg-blue-500 hover:bg-blue-500 focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out;
+    @apply text-white bg-blue-600 hover:bg-blue-600 focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out;
   }
 
   .btn--light {
