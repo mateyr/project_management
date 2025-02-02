@@ -71,4 +71,20 @@ class TasksTest < ApplicationSystemTestCase
 
     assert_selector ".group h3", text: "No tasks"
   end
+
+  test "Show action buttons only to owner or admin" do
+    visit project_path(projects(:one))
+
+    assert_text "New task"
+    assert_text "Manage collaborators"
+
+    # Log in with a non-owner or non-admin account
+    click_on "Sign out"
+    Collaborator.create!(project: projects(:one), user: users(:collaborator), role: :collaborator)
+    login_as users(:collaborator)
+    visit project_path(projects(:one))
+
+    assert_no_text "New task"
+    assert_no_text "Manage collaborators"
+  end
 end
